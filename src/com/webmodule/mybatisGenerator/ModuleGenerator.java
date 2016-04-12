@@ -24,7 +24,10 @@ public class ModuleGenerator {
 	}
 	public void run() throws Exception {
 		
-		String targetProject = "\\Module_MyBatisGenerator\\src";
+		String targetProject = "/Users/focusardi/git/Module_MyBatisGenerator/src";//"Module_MyBatisGenerator";
+		String targetPackageJavaModel = "test.model";
+		String targetPackageSqlMap = "test.xml";
+		String targetPackageJavaClient = "test.dao";
 		
 		Driver projectJDBCDriver = new Driver();
 		System.out.println(projectJDBCDriver.getClass().getProtectionDomain().getCodeSource().getLocation());
@@ -54,30 +57,30 @@ public class ModuleGenerator {
 		context.setJavaTypeResolverConfiguration(javaTypeResolverConfiguration);
 		
 		JavaModelGeneratorConfiguration javaModelGeneratorConfiguration = new JavaModelGeneratorConfiguration();
-		javaModelGeneratorConfiguration.setTargetPackage("test.model");
+		javaModelGeneratorConfiguration.setTargetPackage(targetPackageJavaModel);
 		javaModelGeneratorConfiguration.setTargetProject(targetProject);
 		javaModelGeneratorConfiguration.addProperty("enableSubPackages", "true");
 		javaModelGeneratorConfiguration.addProperty("trimStrings", "true");
 		context.setJavaModelGeneratorConfiguration(javaModelGeneratorConfiguration);
 		
 		SqlMapGeneratorConfiguration sqlMapGeneratorConfiguration = new SqlMapGeneratorConfiguration();
-		sqlMapGeneratorConfiguration.setTargetPackage("test.xml");
+		sqlMapGeneratorConfiguration.setTargetPackage(targetPackageSqlMap);
 		sqlMapGeneratorConfiguration.setTargetProject(targetProject);
 		sqlMapGeneratorConfiguration.addProperty("enableSubPackages", "true");
 		context.setSqlMapGeneratorConfiguration(sqlMapGeneratorConfiguration);
 		
 		JavaClientGeneratorConfiguration javaClientGeneratorConfiguration = new JavaClientGeneratorConfiguration();
-		javaClientGeneratorConfiguration.setTargetPackage("test.dao");
+		javaClientGeneratorConfiguration.setTargetPackage(targetPackageJavaClient);
 		javaClientGeneratorConfiguration.setTargetProject(targetProject);
 		javaClientGeneratorConfiguration.addProperty("enableSubPackages", "true");
 		javaClientGeneratorConfiguration.setConfigurationType("XMLMAPPER");
 		context.setJavaClientGeneratorConfiguration(javaClientGeneratorConfiguration);
 		
 		TableConfiguration WM_SYS_CONFIG = new TableConfiguration(context);
-		WM_SYS_CONFIG.setSchema("WebModuleDB");
-		WM_SYS_CONFIG.setTableName("WM_SYS_CONFIG");
-		WM_SYS_CONFIG.setDelimitIdentifiers(true);
-		WM_SYS_CONFIG.setAllColumnDelimitingEnabled(true);
+		//WM_SYS_CONFIG.setSchema("WebModuleDB");
+		WM_SYS_CONFIG.setTableName("WM_SYS_CONFIG");		
+		//WM_SYS_CONFIG.setDelimitIdentifiers(true);
+		//WM_SYS_CONFIG.setAllColumnDelimitingEnabled(true);
 		
 		context.addTableConfiguration(WM_SYS_CONFIG);
 		
@@ -89,6 +92,14 @@ public class ModuleGenerator {
 
 		DefaultShellCallback callback = new DefaultShellCallback(overwrite);
 		MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
+		
 		myBatisGenerator.generate(null);
+		
+		for(int i =0;i < warnings.size();i++){
+			System.out.println(warnings.get(i));
+		}
+		
+		
 	}
 }
+
