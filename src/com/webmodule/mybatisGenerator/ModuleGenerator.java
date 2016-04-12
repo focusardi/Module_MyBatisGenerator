@@ -25,9 +25,9 @@ public class ModuleGenerator {
 	public void run() throws Exception {
 		
 		String targetProject = "/Users/focusardi/git/WebModule/WebModule/src";//"Module_MyBatisGenerator";
-		String targetPackageJavaModel = "com.main.model";
-		String targetPackageSqlMap = "com.main.sqlxml";
-		String targetPackageJavaClient = "com.main.dao";
+		String targetPackageJavaModel = "com.main.db.model";
+		String targetPackageSqlMap = "com.main.db.sqlxml";
+		String targetPackageJavaClient = "com.main.db.dao";
 		
 		List<String> tableList  = new ArrayList<String>();
 		tableList.add("WM_SYS_CONFIG");
@@ -86,8 +86,8 @@ public class ModuleGenerator {
 			TableConfiguration tableConfiguration = new TableConfiguration(context);
 			//tableConfiguration.setSchema("WebModuleDB");
 			tableConfiguration.setTableName(tableList.get(i));		
-			//tableConfiguration.setDelimitIdentifiers(true);
-			//tableConfiguration.setAllColumnDelimitingEnabled(true);
+			tableConfiguration.setDelimitIdentifiers(true);
+			tableConfiguration.setAllColumnDelimitingEnabled(true);
 			
 			context.addTableConfiguration(tableConfiguration);
 			
