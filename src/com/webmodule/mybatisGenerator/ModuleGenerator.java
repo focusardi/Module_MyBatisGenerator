@@ -24,10 +24,14 @@ public class ModuleGenerator {
 	}
 	public void run() throws Exception {
 		
-		String targetProject = "/Users/focusardi/git/Module_MyBatisGenerator/src";//"Module_MyBatisGenerator";
-		String targetPackageJavaModel = "test.model";
-		String targetPackageSqlMap = "test.xml";
-		String targetPackageJavaClient = "test.dao";
+		String targetProject = "/Users/focusardi/git/WebModule/WebModule/src";//"Module_MyBatisGenerator";
+		String targetPackageJavaModel = "com.main.model";
+		String targetPackageSqlMap = "com.main.sqlxml";
+		String targetPackageJavaClient = "com.main.dao";
+		
+		List<String> tableList  = new ArrayList<String>();
+		tableList.add("WM_SYS_CONFIG");
+		
 		
 		Driver projectJDBCDriver = new Driver();
 		System.out.println(projectJDBCDriver.getClass().getProtectionDomain().getCodeSource().getLocation());
@@ -76,15 +80,18 @@ public class ModuleGenerator {
 		javaClientGeneratorConfiguration.setConfigurationType("XMLMAPPER");
 		context.setJavaClientGeneratorConfiguration(javaClientGeneratorConfiguration);
 		
-		TableConfiguration WM_SYS_CONFIG = new TableConfiguration(context);
-		//WM_SYS_CONFIG.setSchema("WebModuleDB");
-		WM_SYS_CONFIG.setTableName("WM_SYS_CONFIG");		
-		//WM_SYS_CONFIG.setDelimitIdentifiers(true);
-		//WM_SYS_CONFIG.setAllColumnDelimitingEnabled(true);
-		
-		context.addTableConfiguration(WM_SYS_CONFIG);
 		
 		
+		for (int i = 0;i < tableList.size();i++) {
+			TableConfiguration tableConfiguration = new TableConfiguration(context);
+			//tableConfiguration.setSchema("WebModuleDB");
+			tableConfiguration.setTableName(tableList.get(i));		
+			//tableConfiguration.setDelimitIdentifiers(true);
+			//tableConfiguration.setAllColumnDelimitingEnabled(true);
+			
+			context.addTableConfiguration(tableConfiguration);
+			
+		}
 		
 		
 		
