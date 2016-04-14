@@ -86,8 +86,8 @@ public class ModuleGenerator {
 			TableConfiguration tableConfiguration = new TableConfiguration(context);
 			//tableConfiguration.setSchema("WebModuleDB");
 			tableConfiguration.setTableName(tableList.get(i));		
-			tableConfiguration.setDelimitIdentifiers(true);
-			tableConfiguration.setAllColumnDelimitingEnabled(true);
+//			tableConfiguration.setDelimitIdentifiers(true);
+//			tableConfiguration.setAllColumnDelimitingEnabled(true);
 			
 			context.addTableConfiguration(tableConfiguration);
 			
