@@ -31,7 +31,7 @@ public class ModuleGenerator {
 		
 		List<String> tableList  = new ArrayList<String>();
 		tableList.add("WM_SYS_CONFIG");
-		
+		tableList.add("WM_SYS_CODE");
 		
 		Driver projectJDBCDriver = new Driver();
 		System.out.println(projectJDBCDriver.getClass().getProtectionDomain().getCodeSource().getLocation());
