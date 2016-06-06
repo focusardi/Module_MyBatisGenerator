@@ -37,6 +37,7 @@ public class ModuleGenerator {
 		tableList.add("WM_MAIN_AUTHCODE");
 		tableList.add("WM_MAIN_AUTHTOKEN");
 		tableList.add("WM_MAIN_MEMBERS");
+		tableList.add("WM_MAIN_AUTHCOOKIE");
 		
 		
 		Driver projectJDBCDriver = new Driver();
