@@ -33,6 +33,12 @@ public class ModuleGenerator {
 		tableList.add("WM_SYS_CONFIG");
 		tableList.add("WM_SYS_CODE");
 		
+		tableList.add("WM_SYS_SYSID");
+		tableList.add("WM_MAIN_AUTHCODE");
+		tableList.add("WM_MAIN_AUTHTOKEN");
+		tableList.add("WM_MAIN_MEMBERS");
+		
+		
 		Driver projectJDBCDriver = new Driver();
 		System.out.println(projectJDBCDriver.getClass().getProtectionDomain().getCodeSource().getLocation());
 		System.out.println(projectJDBCDriver.getClass().getName());
